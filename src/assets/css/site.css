@@ -160,19 +160,6 @@ body {
   border: 1px solid #E0E0E0;
 }
 
-@media only screen and (max-width: 534px) {
-  .products-container {
-    display: flex;
-    justify-content: center;
-  }
-  .products-container>.products>.product {
-    width: 100%;
-  }
-  .products-container>.product-details {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .products-container>.products>.product {
     width: calc(25% - 1rem);
