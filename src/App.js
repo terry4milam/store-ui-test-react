@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, Suspense, useEffect } from 'react'
+import './assets/css/site.css'
+import { getProductsCount } from './APIs/products/getProducts'
+import Loading from './global/loading'
+import Pagination from './products/pagination'
+// import Products from './products'
+const Products = React.lazy(() => import('./products'))
 function App() {
+  const init_state = {
+    page_index: 0,
+    page_length: 10,
+    total_products_cnt: getProductsCount()
+  }
+  const [ paginationSettongs, setPaginationSettings ] = useState(init_state)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app" className="App">
+      <div className="app-header">
+        <img src="https://static.ateasesystems.net/images/facilis-logo.png" alt="logo"/>
+      </div>
+      <Suspense callback={<Loading/>}>
+        <div className="app-body">
+            <div className="products-container">
+                <Products props = {paginationSettongs}/>
+                <Pagination 
+                  paginationSettongs = {paginationSettongs} 
+                  setPaginationSettings = {setPaginationSettings} 
+                />
+            </div>
+        </div>
+      </Suspense>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
