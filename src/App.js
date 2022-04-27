@@ -1,9 +1,8 @@
 import React, { useState, Suspense, useEffect } from 'react'
 import './assets/css/site.css'
-import { getProductsCount } from './APIs/products/getProducts'
+import getProductsCount from './APIs/products/getProductsCount'
 import Loading from './global/loading'
 import Pagination from './products/pagination'
-// import Products from './products'
 const Products = React.lazy(() => import('./products'))
 function App() {
   const init_state = {

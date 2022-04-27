@@ -139,7 +139,7 @@ body {
 }
 
 .products-container>.pagination>.paginate-btn-group {
-  display: flex;
+  display: flow-root;
   align-content: flex-start;
 }
 
